@@ -498,6 +498,20 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // Fix for the ReferenceError: Defining the confetti trigger function
+        const triggerConfetti = () => {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 75,
+                    origin: { y: 0.6 },
+                    colors: ['#f472b6', '#fb7185', '#fbcfe8', '#ffe4e6', '#f43f5e']
+                });
+            } else {
+                console.warn("Confetti library not loaded yet.");
+            }
+        };
+
         // --- 1. WEB AUDIO API SYNTHESIZER (Optimized) ---
         let audioCtx = null;
         
